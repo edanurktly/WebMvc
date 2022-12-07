@@ -1,0 +1,23 @@
+﻿@using CoreEmptyMvc.Models
+@model List<Kisi>
+<link href="~/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <td> Id </td>
+            <td> Ad </td>
+            <td> Soyad </td>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+        {
+           <tr>
+               <td> @item.Id</td>
+                <td> @item.Ad</td>
+                <td> @item.Soyad</td>
+           </tr> 
+        }
+        </tbody>
+    </table>
