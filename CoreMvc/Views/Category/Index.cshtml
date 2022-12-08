@@ -1,0 +1,26 @@
+﻿@model ICollection<Category>
+
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Kategori Adi</th>
+            <th>Aciklama </th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+                    <tr>
+                        <td>@item.CategoryId</td>
+                        <td>@item.CategoryName</td>
+                        <td>@item.Description</td>
+
+                    </tr>
+        }
+    </tbody>
+
+
+</table>
