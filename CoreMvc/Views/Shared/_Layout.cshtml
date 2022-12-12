@@ -4,10 +4,17 @@
     <meta charset="utf-8" lang="tr" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - CoreMvc</title>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link href="~/font-awesome/css/all.min.css" rel="stylesheet" />
+    <script src="~/font-awesome/js/all.min.js"></script>
+    <link href="//cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/CoreMvc.styles.css" asp-append-version="true" />
+
 </head>
+
 <body>
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
@@ -29,9 +36,11 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Shipper" asp-action="Index">Kargocular</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Customer" asp-action="Index">Musteriler</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Employee" asp-action="Index">Marabalar</a>
                         </li>
-
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Product" asp-action="Index">Urunler</a>
+                        </li>
                     </ul>
                 </div>
             </div>

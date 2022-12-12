@@ -1,5 +1,6 @@
 ﻿using CoreMvc.Entities;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace CoreMvc.Controllers
 {
@@ -19,20 +20,22 @@ namespace CoreMvc.Controllers
             return View(result);
         }
 
-        public IActionResult ShipperorOrders()
+        public IActionResult GetOrders(int id)
         {
-            return View();
+            var result = context.Shippers.Include(p => p.Orders).Where(p => p.ShipperId == id).FirstOrDefault();
+
+            return View(result);
         }
 
         [HttpGet]
         public IActionResult Create()
         {
-            var shipper = new Shipper();
+            var shipper = new CoreMvc.Entities.Shipper();
             return View(shipper);
         }
 
         [HttpPost]
-        public IActionResult Create(Shipper shipper)
+        public IActionResult Create(CoreMvc.Entities.Shipper shipper)
         {
             if (!ModelState.IsValid)
             {
@@ -57,7 +60,7 @@ namespace CoreMvc.Controllers
         }
 
         [HttpPost]
-        public IActionResult Update(Shipper? shipper)
+        public IActionResult Update(CoreMvc.Entities.Shipper? shipper)
         {
 
             if (!ModelState.IsValid)
@@ -82,7 +85,7 @@ namespace CoreMvc.Controllers
             return View(shipper);
         }
         [HttpPost]
-        public IActionResult Delete(Shipper? shipper)
+        public IActionResult Delete(CoreMvc.Entities.Shipper? shipper)
         {
 
 
@@ -94,6 +97,21 @@ namespace CoreMvc.Controllers
             }
             return View(shipper);
         }
+
+        public IActionResult GetOrderDetails(int id)
+        {
+            var result = context.OrderDetails
+                        .Include(p => p.Product)
+                        .ThenInclude(p => p.Category)
+                        .Where(p => p.OrderId == id)
+                        .ToList();
+
+
+            return View(result);
+        }
+
+
+
 
     }
 }

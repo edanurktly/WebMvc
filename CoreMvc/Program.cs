@@ -1,3 +1,4 @@
+using CoreMvc.AutoMapper;
 using CoreMvc.Entities;
 using Microsoft.EntityFrameworkCore;
 
@@ -7,12 +8,23 @@ namespace CoreMvc
     {
         public static void Main(string[] args)
         {
+
+
+
+
+
             var builder = WebApplication.CreateBuilder(args);
             //string qwe = "Alli veli 4950";
             //var kelimeler = qwe.WordCount();
 
             // Add services to the container.
+
+
+            //AutoMapper 'i IOC Container'a regisster Ettik
+            builder.Services.AddAutoMapper(typeof(MapperConfig));
             builder.Services.AddControllersWithViews();
+
+            //Database Contex'i IOC Container'are register ettik
             builder.Services.AddDbContext<NorthwindContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("northwind")));
             var app = builder.Build();
 
